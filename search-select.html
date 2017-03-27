@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+        li{ list-style: none; }
+        .single-line {
+            text-overflow: ellipsis;
+            overflow-x: hidden;
+            white-space: nowrap; 
+        }
+        .search-select-box{ position: relative; left: 20px; top: 20px; }
+        .search-select-box .search-select-selection{ 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 280px; 
+            height: 30px; 
+            border: 1px solid #e5e5e5; 
+            box-sizing: border-box;
+        }
+        .search-select-box .search-select-selection .search-select-input{ 
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .search-select-box .search-select-dropdown{ 
+            position: absolute; 
+            top: 35px; 
+            left: 0; 
+            width: 280px; 
+            max-height: 210px; 
+            overflow-x: hidden;
+            overflow-y: scroll; 
+            padding: 10px; 
+            border: 1px solid #e5e5e5; 
+            box-sizing: border-box; 
+        }
+        .search-select-box .search-select-dropdown li{ 
+            height: 25px; 
+            line-height: 25px; 
+            font-size: 12px; 
+            color: #999; 
+            text-overflow: ellipsis;
+            overflow-x: hidden;
+            white-space: nowrap;
+            cursor: pointer;  
+        }
+        .search-select-box .search-select-dropdown li:hover{
+            background: #0089ff;
+            color: #fff;
+        }
+        .search-select-box .search-select-dropdown li.active{
+            background: #0089ff;
+            color: #fff;
+        }
+        .search-select-box .search-select-dropdown li.none{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-select-box">
+        <div class="search-select-selection">
+            <input type="hidden" class="search-select-value" value="0">
+            <input class="search-select-input" type="text" autocomplete="off" placeholder="请选择" value="全部">
+        </div>
+        <ul class="search-select-dropdown" style="display: none;">
+            <li class="none" style="display: none;">暂无符合条件的信息！</li>
+            <li class="item all active" data-value="0">全部</li>
+            <li class="item" data-value="1">黄金糕</li>
+            <li class="item" data-value="2">双皮奶</li>
+            <li class="item" data-value="3">珍珠奶茶</li>
+            <li class="item" data-value="4">烧仙草</li>
+            <li class="item" data-value="5">酸梅汁</li>
+            <li class="item" data-value="6">黄金糕</li>
+            <li class="item" data-value="7">双皮奶</li>
+            <li class="item" data-value="8">珍珠奶茶</li>
+            <li class="item" data-value="9">烧仙草</li>
+            <li class="item" data-value="10">酸梅汁</li>
+        </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="search-select.js"></script>
+    <script>
+        $(function(){
+            $('div.search-select-box').SearchSelect({
+                change: function (el, value, text) {
+                    console.log(el);
+                    console.log(value);
+                    console.log(text);
+                }
+            });
+        })
+    </script>
+</body>
+</html>
